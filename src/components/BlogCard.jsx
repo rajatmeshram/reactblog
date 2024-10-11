@@ -3,11 +3,11 @@ import { toast } from 'react-toastify';
 
 const BlogCard = ({blog,blogs,setBlogs}) =>{
     const showimg =(img) =>{
-        return (img) ? 'http://127.0.0.1:8000/uploads/blogs/'+img : 'https://placehold.co/600x400';
+        return (img) ? `${import.meta.env.VITE_BASE_URL}/uploads/blogs/`+img : 'https://placehold.co/600x400';
     }
     const deleteBlog =async(id)=>{
         if(confirm('Are you sure? ')){
-            const res = await fetch('http://127.0.0.1:8000/api/delete/'+id,{
+            const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/delete/`+id,{
                 method:'DELETE'
             })
             const newblog = blogs.filter((blog)=>blog.id != id)

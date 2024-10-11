@@ -24,7 +24,7 @@ const EditBlog = () =>{
                 formData.append('image', file);
                 console.log("formData", formData);
     
-                const res = await fetch('http://127.0.0.1:8000/api/save-temp-image', {
+                const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/save-temp-image`, {
                     method: 'POST',
                     body: formData
                 });
@@ -57,7 +57,7 @@ const EditBlog = () =>{
        const newdata1 = {...data, "description":html}
      const newdata ={...newdata1, "image":imageId}
         console.log(newdata)
-       const res = await fetch('http://127.0.0.1:8000/api/editblog/'+params.id,{
+       const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/editblog/`+params.id,{
             method:"PUT",
             headers:{
                 'Content-Type':'application/json'
@@ -68,7 +68,7 @@ const EditBlog = () =>{
        navigate('/');
       }
       const fetchBlog = async () =>{
-        const detaildata = await fetch('http://127.0.0.1:8000/api/details/'+params.id);
+        const detaildata = await fetch(`${import.meta.env.VITE_BASE_URL}/api/details/`+params.id);
         const resp = await detaildata.json()
         setBlog(resp.data)
         setHtml(resp.data.description)
@@ -110,7 +110,7 @@ const EditBlog = () =>{
                                 <label htmlFor='title' className='form-label'>Image</label>
                                 <input type='file' onChange = {handleFileChange} className='form-control' />
                                 {
-                                    (blog.image) && <img className="img-fluid" src={`http://127.0.0.1:8000/uploads/blogs/${blog.image} `} /> 
+                                    (blog.image) && <img className="img-fluid" src={`${import.meta.env.VITE_BASE_URL}/uploads/blogs/${blog.image} `} /> 
                         }
                             </div>
 

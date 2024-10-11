@@ -4,14 +4,14 @@ const Blogs = () =>{
   const [blogs,setBlogs] = useState()
   const [keyword,setKeyword] = useState()
   const fetchBlogs = async () =>{
-    const respblog = await fetch('http://127.0.0.1:8000/api/allblogs');
+    const respblog = await fetch(`${import.meta.env.VITE_BASE_URL}/api/allblogs`);
     const alldata = await respblog.json()
     setBlogs(alldata.data)
     console.log(alldata)
   }
   const searcBlog = async (e)=>{
     event.preventDefault();
-    const respblog = await fetch('http://127.0.0.1:8000/api/allblogs?keyword='+keyword);
+    const respblog = await fetch(`${import.meta.env.VITE_BASE_URL}/api/allblogs?keyword=`+keyword);
     const alldata = await respblog.json()
     setBlogs(alldata.data)
   }

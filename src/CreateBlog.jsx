@@ -24,7 +24,7 @@ const handleFileChange = async (e) => {
             formData.append('image', file);
             console.log("formData", formData);
 
-            const res = await fetch('http://127.0.0.1:8000/api/save-temp-image', {
+            const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/save-temp-image`, {
                 method: 'POST',
                 body: formData
             });
@@ -56,7 +56,7 @@ const handleFileChange = async (e) => {
    const newdata1 = {...data, "description":html}
  const newdata ={...newdata1, "image":imageId}
     console.log(newdata)
-   const res = await fetch('http://127.0.0.1:8000/api/blogs',{
+   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/blogs`,{
         method:"POST",
         headers:{
             'Content-Type':'application/json'
